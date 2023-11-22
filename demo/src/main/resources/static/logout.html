@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+<h1>Welcome to the Dashboard</h1>
+<p>This is your main page after login.</p>
+<button onclick="logout()">Logout</button>
+
+<script>
+    // 注销函数
+    function logout() {
+        fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(response => response.text())
+            .then(message => {
+                alert("注销成功");
+                window.location.href = '/login.html'; // 重定向到登录页面
+            });
+    }
+</script>
+</body>
+</html>
